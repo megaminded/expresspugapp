@@ -1,8 +1,15 @@
 extends layout
 
+mixin comment(data)
+  p= data.username
+  p= data.content
+
+
 block content 
   h1= title
   p Welcome to #{title}
   form(action="/", method="POST")
-    input(type="email", placeholder="Enter email address")
+    input(name="email", type="email", placeholder="Enter email address")
     button(type="submit") Submit
+  for post in posts
+    +comment(post)
